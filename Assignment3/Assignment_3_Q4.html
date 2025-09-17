@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <style>
+      body {
+        font-family: "Gill Sans", "Gill Sans MT", Calibri, "Trebuchet MS",
+          sans-serif;
+        background-color: aliceblue;
+      }
+      header {
+        text-align: center;
+      }
+      main {
+        display: flex;
+        justify-content: center;
+      }
+      .container {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+      }
+
+      .item {
+        margin: 20px;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: space-around;
+        background-color: white;
+        height: 400px;
+        width: 300px;
+        padding: 20px;
+        border-radius: 10px;
+        box-shadow: 3px 3px 10px;
+        text-align: center;
+      }
+
+      .item img {
+        width: 200px;
+      }
+
+      .btn-container {
+        display: flex;
+        justify-content: center;
+        align-items: baseline;
+      }
+
+      .add-to-cart-btn {
+        padding: 10px 20px;
+        background-color: skyblue;
+        border: none;
+        border-radius: 5px;
+        cursor: pointer;
+      }
+    </style>
+  </head>
+  <body>
+    <header>
+      <h3>Our Products</h3>
+    </header>
+    <main>
+      <div class="container">
+        <div class="item">
+          <div><img src="./images/laptop.jpeg" alt="laptop" /></div>
+          <div>
+            <h4>Product 1</h4>
+            <p>High quality product that meets your needs.</p>
+            <p>$805.08</p>
+          </div>
+          <div class="btn-container">
+            <button class="add-to-cart-btn">Add to Cart</button>
+          </div>
+        </div>
+        <div class="item">
+          <div><img src="./images/bag.jpeg" alt="bag" /></div>
+          <div>
+            <h4>Product 2</h4>
+            <p>Excellent craftmanship and durable design.</p>
+            <p>$11.50</p>
+          </div>
+          <div class="btn-container">
+            <button class="add-to-cart-btn">Add to Cart</button>
+          </div>
+        </div>
+        <div class="item">
+          <div><img src="./images/keyboard.jpeg" alt="keyboard" /></div>
+          <div>
+            <h4>Product 3</h4>
+            <p>Reliable and affordable choice for everyone.</p>
+            <p>$12.00</p>
+          </div>
+          <div class="btn-container">
+            <button class="add-to-cart-btn">Add to Cart</button>
+          </div>
+        </div>
+      </div>
+    </main>
+  </body>
+</html>
