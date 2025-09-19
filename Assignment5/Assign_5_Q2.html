@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+       let num=window.prompt("Enter the number of times to print the message:");
+       if(num<0){
+            window.alert("Please enter only positive numbers.");
+            num=window.prompt("Enter the number of times to print the message:");
+        }
+       let msg=window.prompt("Enter the message to be printed:");
+        window.alert("Check the console for the repeated messages!")
+        for(let i=1;i<=num;i++){
+            console.log(i + '.' + msg);
+        }
+    </script>
+        </body>
+</html>
