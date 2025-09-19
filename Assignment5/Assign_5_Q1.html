@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    
+</head>
+<body>
+    <script>
+         let num=window.prompt("Enter the first positive number:");
+         if(num<0){
+            window.alert("Please enter only positive numbers.");
+            num=window.prompt("Enter the first positive number:");
+        }
+        let num2=window.prompt("Enter the second positive number:");
+        if(num2<0){
+            window.alert("Please enter only positive numbers.");
+            num2=window.prompt("Enter the second positive number:");
+        }
+        let num3=window.prompt("Enter the third positive number:");
+         if(num3<0){
+            window.alert("Please enter only positive numbers.");
+            num3=window.prompt("Enter the third positive number:");
+        }
+        let largest;
+        if(num>=num2 && num>=num3){
+            largest=num;
+        }
+        else if(num2>=num && num2>=num3){
+            largest=num2 ;
+        }
+        else{
+            largest=num3;
+        }   
+        window.alert("The largest number is: " + largest);
+    </script>
+</body>
+</html>
