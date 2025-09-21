@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body style="display: flex; flex-direction: column; justify-content: center; align-items: center; height: 100vh;">
+    <h1 style="text-align: center;">Calculator</h1>
+    <table border="1"  text-align="center">
+        <tr>
+            <td>
+                <h4>Enter Number 1</h4>
+            </td>
+            <td>
+                :<input type="number" id="num1">
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <h4>Enter Number 2</h4>
+            </td>
+            <td>
+                :<input type="number" id="num2">
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <h4>Result</h4>
+            </td>
+            <td>
+                :<input type="text" id="result" readonly>
+            </td>
+        </tr>
+        <tr>
+            <td colspan="2">
+                <button onclick="add()">Addition</button>
+                <button onclick="sub()">Subtraction</button>
+                <button onclick="mul()">Multiplication</button>
+                <button onclick="divi()">Division</button>
+            </td>
+    </table>
+
+    <script>
+        function add(){
+            const n1= document.getElementById("num1").value;
+            const n2= document.getElementById("num2").value;
+            const res= parseFloat(n1) + parseFloat(n2);
+            document.getElementById("result").value=res;
+        }
+         function mul(){
+            const n1= document.getElementById("num1").value;
+            const n2= document.getElementById("num2").value;
+            const res= parseFloat(n1) * parseFloat(n2);
+            document.getElementById("result").value=res;
+        }
+         function sub(){
+            const n1= document.getElementById("num1").value;
+            const n2= document.getElementById("num2").value;
+            const res= parseFloat(n1) - parseFloat(n2);
+            document.getElementById("result").value=res;
+        }
+         function divi(){
+            const n1= document.getElementById("num1").value;
+            const n2= document.getElementById("num2").value;
+            if(n1==0){
+                window.alert("Number 1 cannot be zero");
+                return;
+            }else{
+            const res= parseFloat(n1) / parseFloat(n2);
+            document.getElementById("result").value=res;
+            }
+        }
+
+        
+    </script>
+</body>
+</html>
