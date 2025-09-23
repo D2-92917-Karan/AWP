@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h1>Enter Employee Names</h1>
+    <div class="main">
+        
+            <input type="text" id= "name" placeholder="Enter employee named">
+    
+            <button onclick="addName()"> Add name</button>
+            <button onclick="nameSort()">Sort & Display</button>
+       
+    </div>
+    <div class="main2">
+        <h2> Sorted Employees Names</h2>
+    </div>
+        <ul id="tbody"></ul>
+       
+    <script>
+         let count=1
+         let arr = []
+        function addName(){
+          
+            if(count>6){
+               window.alert("you You have already entered 6 names") 
+
+            }else{ 
+                const tbody=document.getElementById('tbody')
+                const name=document.getElementById('name').value
+                arr.push(name);
+                const row=`<li>${name}</li>`
+                tbody.innerHTML+=row    
+                count++  
+                document.getElementById('name').value = ""      
+            }
+        }
+        function nameSort(){
+            var tbody=document.getElementById('tbody')
+            
+            // List.sort((a,b)=>{
+            //     const textA=a.textContent.toLowerCase()
+            //     const textB=b.textContent.toUpperCase()
+            //     return 0;
+            // })
+            tbody.innerHTML=""
+            console.log(arr)
+            let sortedArr = arr.sort();
+            console.log(sortedArr)
+            for(item of sortedArr){
+                // list.appendChild(item)
+                const row=`<li>${item}</li>`
+                console.log(item)
+                tbody.innerHTML+=row
+            }
+        }
+    
+    </script>
+</body>
+</html>
