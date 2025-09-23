@@ -1,0 +1,211 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Sunbeam Registration Form</title>
+  <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+  <style>
+    span.error {
+      color: red;
+      font-size: 12px;
+      margin-left: 8px;
+    }
+  </style>
+</head>
+<body style="text-align:left;justify-items: center;">
+  <img src="https://tse2.mm.bing.net/th/id/OIP.QWQa_DOZz1V1EsoHymMQYwHaBE?pid=Api&P=0&h=180" 
+       alt="Sunbeam Logo" style="margin: 0 auto; display: block;">
+  <h1>Sunbeam Registration Form</h1>
+  <table>
+    <tr>
+      <td>
+        <iframe width="560" height="315" 
+            src="https://www.youtube.com/embed/Az5Bt3zUtiM?si=ebhbrCEmQNUThHNX" 
+            title="YouTube video player" frameborder="0" allowfullscreen></iframe>
+      </td>
+      <td>
+        <form id="Register">
+          <table>
+            <tr>
+              <td><label for="name">Name:</label></td>
+              <td>
+                <input type="text" id="name" name="name" placeholder="Enter the name">
+                <span id="nameError" class="error"></span>
+              </td>
+            </tr>
+            <tr>
+              <td><label for="dob">Date of Birth:</label></td>
+              <td>
+                <input type="date" id="dob" name="dob">
+                <span id="dobError" class="error"></span>
+              </td>
+            </tr>
+            <tr>
+              <td><label for="email">Email:</label></td>
+              <td>
+                <input type="email" id="email" name="email" placeholder="Enter Email">
+                <span id="emailError" class="error"></span>
+              </td>
+            </tr>
+            <tr>
+              <td><label for="password">Password:</label></td>
+              <td>
+                <input type="password" id="password" name="password" placeholder="Enter Password">
+                <span id="passwordError" class="error"></span>
+              </td>
+            </tr>
+            <tr>
+              <td><label for="address">Address:</label></td>
+              <td>
+                <textarea id="address" name="address"></textarea>
+                <span id="addressError" class="error"></span>
+              </td>
+            </tr>
+            <tr>
+              <td>Gender:</td>
+              <td>
+                <input type="radio" id="male" name="gender" value="Male">
+                <label for="male">Male</label>
+                <input type="radio" id="female" name="gender" value="Female">
+                <label for="female">Female</label>
+                <span id="genderError" class="error"></span>
+              </td>
+            </tr>
+            <tr>
+              <td><label for="photo">Upload your photo:</label></td>
+              <td>
+                <input type="file" id="photo" name="photo">
+                <span id="photoError" class="error"></span>
+              </td>
+            </tr>
+            <tr>
+              <td><label for="course">Select Your Course</label></td>
+              <td>
+                <select id="course" name="course">
+                  <option value="">--Select--</option>
+                  <option value="CPP">Cpp</option>
+                  <option value="Java">Java</option>
+                  <option value="Python">Python</option>
+                </select>
+                <span id="courseError" class="error"></span>
+              </td>
+            </tr>
+            <tr>
+              <td><label>Skillset</label></td>
+              <td>
+                <input type="checkbox" id="java" name="skillset" value="Java">
+                <label for="java">Java</label>
+                <input type="checkbox" id="cpp" name="skillset" value="CPP">
+                <label for="cpp">CPP</label>
+                <input type="checkbox" id="os" name="skillset" value="OS">
+                <label for="os">OS</label>
+                <span id="skillError" class="error"></span>
+              </td>
+            </tr>
+            <tr>
+              <td></td>
+              <td>
+                <button type="submit">Save</button>
+                <input type="reset">
+              </td>
+            </tr>
+          </table>
+        </form>
+      </td>
+    </tr>
+  </table>
+
+  <script>
+    $(document).ready(function () {
+      $("#Register").submit(function (e) {
+        e.preventDefault();
+        $(".error").text("");  
+        let isValid = true;
+
+        let name = $("#name").val().trim();
+        let dob = $("#dob").val();
+        let email = $("#email").val().trim();
+        let password = $("#password").val().trim();
+        let address = $("#address").val().trim();
+        let gender = $("input[name='gender']:checked").val();
+        let photo = $("#photo").val();
+        let course = $("#course").val();
+        let skillset = $("input[name='skillset']:checked");
+
+        if (!/^[A-Za-z]{1,10}$/.test(name)) {
+          $("#nameError").text("Only alphabets, max 10 chars.");
+          isValid = false;
+        }
+
+        if (!dob) {
+          $("#dobError").text("Birthdate required.");
+          isValid = false;
+        } else {
+          let birthDate = new Date(dob);
+          let today = new Date();
+          let age = today.getFullYear() - birthDate.getFullYear();
+          let m = today.getMonth() - birthDate.getMonth();
+          if (m < 0 || (m === 0 && today.getDate() < birthDate.getDate())) age--;
+          if (birthDate >= today || age < 18) {
+            $("#dobError").text("Must be past date & 18+.");
+            isValid = false;
+          }
+        }
+
+        if (!email || !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) {
+          $("#emailError").text("Valid email required.");
+          isValid = false;
+        }
+
+        if (!(password.length > 8 && password.includes("#") && /\d/.test(password))) {
+          $("#passwordError").text("Min 9 chars, must contain # and a digit.");
+          isValid = false;
+        }
+
+        if (!address) {
+          $("#addressError").text("Address required.");
+          isValid = false;
+        }
+
+        if (!gender) {
+          $("#genderError").text("Select gender.");
+          isValid = false;
+        }
+
+        if (!photo) {
+          $("#photoError").text("Upload a photo.");
+          isValid = false;
+        }
+
+        if (!course) {
+          $("#courseError").text("Select a course.");
+          isValid = false;
+        }
+
+        if (skillset.length === 0) {
+          $("#skillError").text("Select at least one skill.");
+          isValid = false;
+        }
+
+        if (isValid) {
+          let data = {
+            name,
+            dob,
+            email,
+            password,
+            address,
+            gender,
+            photo,
+            course,
+            skillset: skillset.map(function () { return $(this).val(); }).get()
+          };
+          sessionStorage.setItem("registrationData", JSON.stringify(data));
+          alert("Form submitted successfully! Data saved in session storage.");
+          $("#Register")[0].reset();
+        }
+      });
+    });
+  </script>
+</body>
+</html>
